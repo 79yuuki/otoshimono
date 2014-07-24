@@ -46,6 +46,7 @@ passport.use(new FacebookStrategy({
   clientSecret: FACEBOOK_APP_SECRET,
   callbackURL: CALLBACK_URL
 }, function(accessToken, refreshToken, profile, done){
+  // TODO profile 情報を永続化させる？
   process.nextTick(function(){
     return done(null, profile);
   });
