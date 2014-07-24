@@ -1,5 +1,8 @@
 # おとしもの
 
+[http://otoshimono.herokuapp.com/]
+※callback_urlとdeveloper.facebook.comでの設定変更が必要。
+
 ## quick start
 
 起動
