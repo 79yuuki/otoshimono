@@ -13,7 +13,7 @@
 
 ## Routing
 
-### /login/[:id] (GET)
+### /login/:id (GET)
 落とす側のログイン
 
 ### /auth/facebook (GET)
@@ -21,9 +21,9 @@
 成功callback先 -> /message/[:id]
 失敗すると/login
 
-### /message/[:id] (GET)
+### /message/:id (GET)
 メッセージやりとり
 
-### /profile/[:id] (GET)
+### /profile/:id (GET)
 拾った人が最初にみるプロフページ
 
