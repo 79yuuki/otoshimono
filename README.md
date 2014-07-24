@@ -21,12 +21,20 @@
 
 ### /auth/facebook (GET)
 落とす人が叩く facebook ログイン
+
 成功callback先 -> /message/[:id]
-失敗すると/login
+
+失敗すると/loginへ
 
 ### /message/:id (GET)
 メッセージやりとり
+- [ ] ログインしていたら落とした人判定
 
 ### /profile/:id (GET)
 拾った人が最初にみるプロフページ
+- [ ] 名前登録されていたらその名前でmessageページヘ
+
+### /profile/finder (POST) 
+- [ ] 拾った人の名前登録
+
 
