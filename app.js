@@ -47,7 +47,12 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 var FACEBOOK_APP_ID = "734337516630340";
 var FACEBOOK_APP_SECRET = "6bc43f6db0a4dcd1e09d92a0acecd4ad";
-var CALLBACK_URL = "http://localhost:3000/auth/facebook/callback";
+var CALLBACK_URL;
+if (process.env.REDISTOGO_URL) {
+  CALLBACK_URL = "http://otoshimono.herokuapp.com/auth/facebook/callback";
+} else {
+  CALLBACK_URL = "http://localhost:3000/auth/facebook/callback";
+}
 
 passport.serializeUser(function(user, done){
   done(null, user);
