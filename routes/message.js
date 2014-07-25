@@ -13,7 +13,6 @@ router.get('/:id', function(req, res){
     return res.redirect('/');
   }
   var loginUser = req.session.passport.user;
-  console.log('message========', loginUser);
   if (loginUser) {
     res.render('message', {id: id, loginUser: loginUser, guestUser: null});
   } else {
@@ -37,7 +36,7 @@ router.post('/comment', function(req, res){
     return res.json({ error: "ID is none" });
   }
   if (comment) {
-    client.rpush('message:' + id, JSON.stringify({comment: comment, user: userName}));
+    client.rpush('message:' + id, JSON.stringify({comment: comment, user: userName, time: Date.now()}));
     return res.json({comment: comment});
   } else {
     return res.json({error: "comment text is none"});
@@ -50,7 +49,11 @@ router.post('/list', function(req, res){
     return res.json({error: 'ID is none'});
   }
   var length = client.llen('message:' + id);
-  return res.json({ list: JSON.parse(client.lrange('message:'+id, 0, length))});
+  if (length > 0) {
+    return res.json({ list: JSON.parse(client.lrange('message:'+id, 0, length))});
+  } else {
+    return res.json({ list: {} });
+  }
 });
 
 module.exports = router;
