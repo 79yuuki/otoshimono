@@ -13,7 +13,7 @@ router.get('/facebook/callback',
           function(req, res){
             var id = req.cookies.id;
             if (id) {
-              res.redirect('/message/' + id);
+              res.redirect('/loggedin/' + id);
             } else {
               // login failure
               res.redirect('/login');
