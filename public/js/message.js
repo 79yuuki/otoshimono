@@ -16,7 +16,7 @@ $(function(){
         return console.log(result.error);
       }
       console.log(result.list);
-      $('#messages').html(/* resultをlist表示とか？おまかせします！ */);
+      $('#messageArea').html(/* resultをlist表示とか？おまかせします！ */);
     },
     error: function(){
       console.log('Server error.');
@@ -28,11 +28,11 @@ $(function(){
 
   var postUserName = loginUser.displayName || guestUser;
 
-  $('button#comment').click(function(){
+  $('#commentSendBtn').click(function(){
     $.ajax({
       type: 'post',
       url: '/message/comment',
-      data: JSON.stringify({id: id, comment: "TODO formでコメント取得", user: postUserName}),
+      data: JSON.stringify({id: id, comment: $('#commentText').val(), user: postUserName}),
       contentType: 'application/json',
       dataType: 'json',
       success: function(result){

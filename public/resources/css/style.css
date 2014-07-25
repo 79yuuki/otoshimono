@@ -197,7 +197,7 @@ body, p {
   width: 100%;
 }
 
-#messagePage #messageArea tr.last {
+#messagePage .lastPadding {
   height: 120px;
 }
 

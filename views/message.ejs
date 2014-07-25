@@ -1,18 +1,52 @@
-<!DOCTYPE HTML>
-<html lang="ja">
-<head>
-  <meta charset="UTF-8">
-  <title>メッセージ</title>
-</head>
-<body>
-  <h1>メッセージ</h1>
-  <div id="messages"></div>
-  <button id="comment">コメント</button>
-  <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+<% include header %>
+
+<body id="messagePage">
+
+  <header id="header" class="header">
+    <div class="container widthKeeper">
+      <div class="userInfo owner left">
+        <img class="icon" src="https://graph.facebook.com/<%= loginUser._json.id %>/picture" alt="">
+        <p class="name"><%= loginUser.displayName %>さん</p>
+      </div><!-- /owner -->
+      <div class="userInfo finder right">
+        <img class="icon" src="/resources/images/header_icon_finder.png" alt="">
+        <p class="name">三島 良太さん</p>
+      </div><!-- /finder -->
+    </div><!-- /container -->
+  </header><!-- /header -->
+
+  <div class="contents widthKeeper">
+    <div class="container">
+      <table id="messageArea">
+        <tr class="messageWrapper owner">
+          <td class="icon"><img src="https://graph.facebook.com/<%= loginUser._json.id %>/picture" alt=""></td>
+          <td class="fukidashi"></td>
+          <td colspan="3" class="message"><p>こんにちは！</p></td>
+        </tr>
+        <tr class="messageWrapper finder">
+          <td colspan="3" class="message"><p>こんにちは！</p></td>
+          <td class="fukidashi"></td>
+          <td class="icon"><img src="/resources/images/icon_finder.png" alt=""></td>
+        </tr>
+      </table><!-- /messageArea -->
+      <p class="lastPadding"></p>
+    </div><!-- /container -->
+  </div><!-- /contents -->
+
+  <div class="footer" data-position="fixed">
+    <div class="container widthKeeper">
+      <input type="text" id="commentText" class="textArea">
+      <a id="commentSendBtn" href="javascript:void(0);" class="sendBtn bottomBtn">
+        <img class="sendBtnImg" src="/resources/images/btn_send.png" alt="">
+      </a>
+    </div><!-- /container -->
+  </div><!-- /footer -->
+
+  <% include scripts %>
   <script type="text/javascript">
-  var id = "<%= id %>"
-  var loginUser = "<%= loginUser %>"
-  var guestUser = "<%= guestUser %>"
+    var id = "<%= id %>"
+    var loginUser = "<%= loginUser %>"
+    var guestUser = "<%= guestUser %>"
   </script>
   <script type="text/javascript" src="/js/message.js"></script>
 </body>
