@@ -3,10 +3,9 @@
 var passport = require('passport');
 var express = require('express');
 var router = express.Router();
-var redis = require('redis');
-var client = redis.createClient();
+var redis = require('../lib/redis');
 
-client.on('error', function (err){
+redis.on('error', function (err){
   console.log('redis Error: ', err);
 });
 
@@ -21,7 +20,7 @@ router.get('/facebook/callback',
             var user = req.user;
             res.cookie('passport', req.user);
             if (id && user) {
-              client.hset(id, 'facebook', JSON.stringify(user));
+              redis.hset(id, 'facebook', JSON.stringify(user));
               res.redirect('/loggedin/' + id);
             } else {
               // login failure
