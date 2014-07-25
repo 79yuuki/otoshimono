@@ -9,6 +9,7 @@ var session = require('express-session');
 var bodyParser = require('body-parser');
 var passport = require('passport');
 var FacebookStrategy = require('passport-facebook').Strategy;
+var RedisStore = require('connect-redis')(session);
 
 var routes = require('./routes');
 
@@ -24,8 +25,22 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded());
 app.use(cookieParser());
 
+var url = require('url');
+var parsed_url = url.parse(process.env.REDISTOGO_URL || 'http://localhost:6379');
+var parsed_auth = (parsed_url.auth || '').split(':');
+console.log(parsed_url);
+console.log(parsed_auth);
+app.use(session({
+  secret: 'otoshimono',
+  store: new RedisStore({
+    host: parsed_url.hostname,
+    port: parsed_url.port,
+    pass: parsed_auth[1],
+    ttl: 1000000
+  })
+}));
+
 // facebook login
-app.use(session({secret: 'otoshimono'}));
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(express.static(path.join(__dirname, 'public')));
@@ -46,7 +61,6 @@ passport.use(new FacebookStrategy({
   clientSecret: FACEBOOK_APP_SECRET,
   callbackURL: CALLBACK_URL
 }, function(accessToken, refreshToken, profile, done){
-  // TODO profile 情報を永続化させる？
   process.nextTick(function(){
     return done(null, profile);
   });

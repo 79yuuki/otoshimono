@@ -1,8 +1,6 @@
 0 info it worked if it ends with ok
-1 verbose cli [ '/Users/shichikuuki/.nvm/v0.10.26/bin/node',
-1 verbose cli   '/Users/shichikuuki/.nvm/v0.10.26/bin/npm',
-1 verbose cli   'start' ]
-2 info using npm@1.4.3
+1 verbose cli [ 'node', '/Users/shichiku_yuki/.nvm/v0.10.26/bin/npm', 'start' ]
+2 info using npm@1.4.10
 3 info using node@v0.10.26
 4 verbose run-script [ 'prestart', 'start', 'poststart' ]
 5 info prestart node79@0.0.1
@@ -19,10 +17,10 @@
 10 error You can get their info via:
 10 error     npm owner ls node79
 10 error There is likely additional logging output above.
-11 error System Darwin 13.2.0
-12 error command "/Users/shichikuuki/.nvm/v0.10.26/bin/node" "/Users/shichikuuki/.nvm/v0.10.26/bin/npm" "start"
-13 error cwd /Users/shichikuuki/Documents/project/bapa/otoshimono
+11 error System Darwin 11.4.2
+12 error command "node" "/Users/shichiku_yuki/.nvm/v0.10.26/bin/npm" "start"
+13 error cwd /Users/shichiku_yuki/Develop/otoshimono
 14 error node -v v0.10.26
-15 error npm -v 1.4.3
+15 error npm -v 1.4.10
 16 error code ELIFECYCLE
 17 verbose exit [ 1, true ]
