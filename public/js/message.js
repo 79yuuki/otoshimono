@@ -1,4 +1,4 @@
-/* global $, id */
+/* global $, id, loginUser, guestUser */
 
 'use strict';
 
@@ -26,11 +26,13 @@ $(function(){
     }
   });
 
+  var postUserName = loginUser.displayName || guestUser;
+
   $('button#comment').click(function(){
     $.ajax({
       type: 'post',
       url: '/message/comment',
-      data: JSON.stringify({id: id, comment: "TODO formでコメント取得"}),
+      data: JSON.stringify({id: id, comment: "TODO formでコメント取得", user: postUserName}),
       contentType: 'application/json',
       dataType: 'json',
       success: function(result){

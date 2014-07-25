@@ -32,11 +32,12 @@ router.get('/:id', function(req, res){
 router.post('/comment', function(req, res){
   var id = req.param('id');
   var comment = req.param('comment');
+  var userName = req.param('user');
   if (!id) {
     return res.json({ error: "ID is none" });
   }
   if (comment) {
-    client.rpush('message:' + id, comment);
+    client.rpush('message:' + id, JSON.stringify({comment: comment, user: userName}));
     return res.json({comment: comment});
   } else {
     return res.json({error: "comment text is none"});
@@ -49,11 +50,7 @@ router.post('/list', function(req, res){
     return res.json({error: 'ID is none'});
   }
   var length = client.llen('message:' + id);
-  if (length === 0) {
-    return res.json({});
-  } else {
-    return res.json({ list: client.lrange('message:'+id, 0, length)});
-  }
+  return res.json({ list: JSON.parse(client.lrange('message:'+id, 0, length))});
 });
 
 module.exports = router;
