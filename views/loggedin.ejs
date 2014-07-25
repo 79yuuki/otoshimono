@@ -1,12 +1,4 @@
-<!DOCTYPE html>
-<html lang="ja">
-<head>
-<meta charset="utf-8">
-<title>otoshimono</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no, target-densityDpi=medium-dpi">
-<link href="/resources/css/reset.css" rel="stylesheet">
-<link href="/resources/css/style.css" rel="stylesheet">
-</head>
+<% include header %>
 
 <body id="fbLoggedinPage">
 
@@ -24,7 +16,7 @@
     </div><!-- /container -->
   </div><!-- /contents -->
 
-  <div class="footer">
+  <div class="footer" data-position="fixed">
     <div class="container widthKeeper">
       <a href="/message/<%= id %>" class="btnGoChat bottomBtn">
         <img class="btnGoChatImg" src="/resources/images/btn_go_chat.png" alt="">
@@ -32,5 +24,6 @@
     </div><!-- /container -->
   </div><!-- /footer -->
 
+  <% include scripts %>
 </body>
 </html>
