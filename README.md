@@ -5,6 +5,13 @@
 
 ## quick start
 
+起動前に
+
+```
+brew install redis
+redis-server
+```
+
 起動
 
 ```
