@@ -38,9 +38,6 @@ body, p {
 .header .container {
   clear:both;
   height: 20px
-    /* ヘッダーの中身の余白や背景などを設定 */
-    /* ex. margin padding background border */
-
 }
 
 
@@ -63,20 +60,17 @@ body, p {
 
 /* フッター
 -------------------------------------------------- */
-.footer{
+.footer {
   position: fixed;
   bottom: 0px;
   left: 0px;
   width: 100%;
-  height: 100px;
-}
-
-.footer .container{
+  height: 70px;
 }
 
 .footer .container .bottomBtn{
   display: block;
-  height: 100px;
+  height: 70px;
 }
 
 .footer .container .btnGoChat{
@@ -150,4 +144,129 @@ body, p {
   width: 222px;
   display: block;
   margin: 30px auto;
+}
+
+
+/* メッセージページ
+-------------------------------------------------- */
+#messagePage .header .userInfo {
+  width: 50%;
+  height: 50px;
+  font-weight: bold;
+  overflow: hidden;
+}
+
+#messagePage .header .owner {
+  background-color: #dcdddd;
+  color: #e71a19;
+}
+
+#messagePage .header .finder {
+  background-color: #ffbaba;
+}
+
+#messagePage .header .icon {
+  width: 50px;
+  float: left;
+}
+
+#messagePage .header .name {
+  display: table-cell;
+  vertical-align: middle;
+  height: 50px;
+  padding: 0 5px;
+}
+
+#messagePage .header .container {
+  height: 50px;
+}
+
+#messagePage #messageArea {
+  width: 100%;
+}
+
+#messagePage #messageArea tr.last {
+  height: 120px;
+}
+
+#messagePage #messageArea .icon {
+  width: 70px;
+}
+
+#messagePage #messageArea .icon img {
+  width: 50px;
+  margin: 10px;
+}
+
+#messagePage #messageArea td.message {
+  vertical-align: middle;
+}
+
+#messagePage #messageArea td.fukidashi {
+  width: 10px;
+  background-repeat: no-repeat;
+  background-size: 10px 12px;
+  background-position: 0px 30px;
+}
+
+#messagePage #messageArea .owner .fukidashi {
+  background-image: url(/resources/images/fukidashi_arrow_gray.png);
+}
+
+#messagePage #messageArea .finder .fukidashi {
+  background-image: url(/resources/images/fukidashi_arrow_red.png);
+}
+
+#messagePage #messageArea .finder td.message p {
+  float: right;
+}
+
+#messagePage #messageArea .finder td.message p:after {
+  clear: both;
+}
+
+#messagePage #messageArea .message p {
+  max-width: 70%;
+  margin: 10px 0;
+  padding: 5px 10px 5px 10px;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+}
+
+#messagePage #messageArea .owner .message p {
+  background-color: #dcdddd;
+}
+
+#messagePage #messageArea .finder .message p {
+  background-color: #ffbaba;
+}
+
+#messagePage #messageArea .message:after {
+  clear: both;
+}
+
+#messagePage .footer {
+  height: 100px;
+}
+
+#messagePage .footer .container .textArea {
+  width: 100%;
+  box-sizing: border-box;
+  border: 3px solid #e71a19;
+}
+
+#messagePage .footer .container .sendBtn {
+  background-color: #e71a19;
+}
+
+#messagePage .footer .container .sendBtnImg {
+  width: 49px;
+  display: block;
+  margin: 0 auto;
+  position: relative;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+  margin-top: -6px;
 }
