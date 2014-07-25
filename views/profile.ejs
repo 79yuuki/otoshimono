@@ -2,35 +2,43 @@
 
 <body id="profilePage">
 
-  <header id="header" class="header">
-    <div class="container widthKeeper">
-      <div class="left"></div><div class="right"></div>
-    </div><!-- /container -->
-  </header><!-- /header -->
+  <form action="/profile/finder" name="finderNameForm" id="finderNameForm" method="post">
+    <header id="header" class="header">
+      <div class="container widthKeeper">
+        <div class="left"></div><div class="right"></div>
+      </div><!-- /container -->
+    </header><!-- /header -->
 
-  <div class="contents widthKeeper">
-    <div class="container">
-      <img class="profile" src="/resources/images/profile.jpg" alt="">
-      <p class="ownerName"><%= id %></p>
-      <img class="fbProfileMessageText" src="/resources/images/text_profile_message.png" alt="">
-    </div><!-- /container -->
-  </div><!-- /contents -->
+    <div class="contents widthKeeper">
+      <div class="container">
+        <img class="profile" src="/resources/images/profile.jpg" alt="">
+        <p class="ownerName"><%= guestUser %></p>
+        <img class="fbProfileMessageText" src="/resources/images/text_profile_message.png" alt="">
+        <img class="nicknameMessageText" src="/resources/images/text_nickname_message.png" alt="">
+        <input type="text" name="name" id="finderName" class="textArea">
+      </div><!-- /container -->
+    </div><!-- /contents -->
 
-  <div>
-    <form action="/profile/finder" method="post">
-      <p><input type="text" name="name"></p>
-    </form>
-    <!-- こんな感じでsubmitしてくれれば /messaage にリダイレクトします -->
-  </div>
-
-  <div class="footer" data-position="fixed">
-    <div class="container widthKeeper">
-      <a href="/message/<%= id %>" class="btnGoChat bottomBtn">
-        <img class="btnGoChatImg" src="/resources/images/btn_go_chat.png" alt="">
-      </a>
-    </div><!-- /container -->
-  </div><!-- /footer -->
+    <div class="footer" data-position="fixed">
+      <div class="container widthKeeper">
+        <a href="javascript:void(0);" id="submitBtn" class="btnGoChat bottomBtn">
+          <img class="btnGoChatImg" src="/resources/images/btn_go_chat.png" alt="">
+        </a>
+      </div><!-- /container -->
+    </div><!-- /footer -->
+  </form>
 
   <% include scripts %>
+  <script type="text/javascript">
+    $(function() {
+        $('#submitBtn').click(function() {
+          if ($("#finderName").val()) {
+            $('#finderNameForm').submit();
+          } else {
+            alert("ニックネームを入力してください");
+          }
+        });
+    });
+  </script>
 </body>
 </html>

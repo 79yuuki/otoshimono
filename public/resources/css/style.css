@@ -5,7 +5,6 @@
 body, p {
   margin: 0;
   padding: 0;
-  height: 100%;
 }
 
 
@@ -141,11 +140,24 @@ body, p {
 }
 
 #profilePage .contents .container .fbProfileMessageText {
-  width: 222px;
+  width: 188px;
   display: block;
   margin: 30px auto;
 }
 
+#profilePage .contents .container .nicknameMessageText {
+  width: 193px;
+  display: block;
+  margin: 30px auto;
+}
+
+#profilePage .contents .container .textArea {
+  display: block;
+  width: 80%;
+  margin: 0 auto;
+  box-sizing: border-box;
+  border: 3px solid #e71a19;
+}
 
 /* メッセージページ
 -------------------------------------------------- */
