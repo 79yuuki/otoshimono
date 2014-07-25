@@ -1,11 +1,35 @@
-<!DOCTYPE HTML>
+<!DOCTYPE html>
 <html lang="ja">
 <head>
-  <meta charset="UTF-8">
-  <title>otoshimono login</title>
+<meta charset="utf-8">
+<title>otoshimono</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no, target-densityDpi=medium-dpi">
+<link href="/resources/css/reset.css" rel="stylesheet">
+<link href="/resources/css/style.css" rel="stylesheet">
 </head>
-<body>
-  <h1>login</h1>
-  <a href="/auth/facebook">facebook login</a>
+
+<body id="fbLoginPage">
+
+  <header id="header" class="header">
+    <div class="container widthKeeper">
+      <div class="left"></div><div class="right"></div>
+    </div><!-- /container -->
+  </header><!-- /header -->
+
+  <div class="contents widthKeeper">
+    <div class="container">
+      <img class="logo" src="/resources/images/logo.png" alt="">
+      <img class="fbLoginText" src="/resources/images/text_lets_fb_login.png" alt="">
+    </div><!-- /container -->
+  </div><!-- /contents -->
+
+  <div class="footer">
+    <div class="container widthKeeper">
+      <a href="/auth/facebook" class="fbBtn bottomBtn">
+        <img class="fbBtnImg" src="/resources/images/btn_fb_login.png" alt="">
+      </a>
+    </div><!-- /container -->
+  </div><!-- /footer -->
+
 </body>
 </html>
