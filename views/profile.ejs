@@ -24,6 +24,13 @@
     </div><!-- /container -->
   </div><!-- /contents -->
 
+  <div>
+    <form action="/profile/finder" method="post">
+      <p><input type="text" name="name"></p>
+    </form>
+    <!-- こんな感じでsubmitしてくれれば /messaage にリダイレクトします -->
+  </div>
+
   <div class="footer">
     <div class="container widthKeeper">
       <a href="/message/<%= id %>" class="btnGoChat bottomBtn">

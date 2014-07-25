@@ -20,7 +20,6 @@ router.get('/facebook/callback',
             var id = req.cookies.id;
             var user = req.user;
             res.cookie('passport', req.user);
-console.log('hoge-------', req.session);
             if (id && user) {
               client.hset(id, 'facebook', JSON.stringify(user));
               res.redirect('/loggedin/' + id);

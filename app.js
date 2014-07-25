@@ -28,8 +28,6 @@ app.use(cookieParser());
 var url = require('url');
 var parsed_url = url.parse(process.env.REDISTOGO_URL || 'http://localhost:6379');
 var parsed_auth = (parsed_url.auth || '').split(':');
-console.log(parsed_url);
-console.log(parsed_auth);
 app.use(session({
   secret: 'otoshimono',
   store: new RedisStore({
