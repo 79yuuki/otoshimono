@@ -30,11 +30,19 @@
 メッセージやりとり
 - [ ] ログインしていたら落とした人判定
 
+### /message/comment (POST)
+メッセージを自分のユーザー名で送る
+param: id, comment
+return: json (ex) { "comment": "使わないかもしれないけどコメント内容が一応返ってくるよ" }
+
+### /message/list (POST)
+メッセージ取得
+
 ### /profile/:id (GET)
 拾った人が最初にみるプロフページ
 - [ ] 名前登録されていたらその名前でmessageページヘ
 
 ### /profile/finder (POST) 
 - [ ] 拾った人の名前登録
-
+param: name
 

@@ -9,6 +9,9 @@ router.get('/:id', function(req, res){
   // TODO 最初にユーザーデータをejsに渡すか、REST APIでクライアンtjsから取ってきてもらうか
   // TODO check id format
   var id = req.param('id');
+  if (!id) {
+    return res.redirect('/');
+  }
   var loginUser = req.session.passport.user;
   console.log('message========', loginUser);
   if (loginUser) {
@@ -23,6 +26,33 @@ router.get('/:id', function(req, res){
     } else {
       res.redirect('/profile/' + id);
     }
+  }
+});
+
+router.post('/comment', function(req, res){
+  var id = req.param('id');
+  var comment = req.param('comment');
+  if (!id) {
+    return res.json({ error: "ID is none" });
+  }
+  if (comment) {
+    client.rpush('message:' + id, comment);
+    return res.json({comment: comment});
+  } else {
+    return res.json({error: "comment text is none"});
+  }
+});
+
+router.post('/list', function(req, res){
+  var id = req.param('id');
+  if (!id) {
+    return res.json({error: 'ID is none'});
+  }
+  var length = client.llen('message:' + id);
+  if (length === 0) {
+    return res.json({});
+  } else {
+    return res.json({ list: client.lrange('message:'+id, 0, length)});
   }
 });
 

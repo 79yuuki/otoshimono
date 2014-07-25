@@ -6,8 +6,14 @@
 </head>
 <body>
   <h1>メッセージ</h1>
-  <%= id %>
-  <%= loginUser %>
-  <%= guestUser %>
+  <div id="messages"></div>
+  <button id="comment">コメント</button>
+  <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+  <script type="text/javascript">
+  var id = "<%= id %>"
+  var loginUser = "<%= loginUser %>"
+  var guestUser = "<%= guestUser %>"
+  </script>
+  <script type="text/javascript" src="/js/message.js"></script>
 </body>
 </html>
