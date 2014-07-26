@@ -58,7 +58,7 @@ router.post('/list', function(req, res){
         if (err) {
           return res.render('error', err);
         }
-        return res.json({ list: JSON.parse(list)});
+        return res.json({ list: list });
       });
     } else {
       return res.json({ list: {} });
