@@ -16,10 +16,10 @@ router.get('/:id', function(req, res){
   } else {
     // guest user
     // TODO redis から id: guest を引っ張ってきてあったら表示。無ければ名前登録前profileにredirect?
-    console.log(req.session);
     var guestUser = redis.hget(id, 'guest');
+    loginUser = redis.hget(id, 'facebook');
     if (guestUser) {
-      res.render('message', {id: id, loginUser: null, guestUser: guestUser});
+      res.render('message', {id: id, loginUser: loginUser, guestUser: guestUser});
     } else {
       res.redirect('/profile/' + id);
     }
