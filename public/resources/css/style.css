@@ -101,6 +101,10 @@ body, p {
   margin: 50px auto;
 }
 
+#errorPage .contents .container .errorDiscription {
+  text-align: center;
+}
+
 /* ログインページ
 -------------------------------------------------- */
 #fbLoginPage .contents .container .fbLoginText {
