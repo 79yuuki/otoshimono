@@ -18,16 +18,6 @@
   <div class="contents widthKeeper">
     <div class="container">
       <table id="messageArea">
-        <tr class="messageWrapper owner">
-          <td class="icon"><img src="https://graph.facebook.com/<%= loginUser.id %>/picture" alt=""></td>
-          <td class="fukidashi"></td>
-          <td colspan="3" class="message"><p>こんにちは！</p></td>
-        </tr>
-        <tr class="messageWrapper finder">
-          <td colspan="3" class="message"><p>こんにちは！</p></td>
-          <td class="fukidashi"></td>
-          <td class="icon"><img src="/resources/images/icon_finder.png" alt=""></td>
-        </tr>
       </table><!-- /messageArea -->
       <p class="lastPadding"></p>
     </div><!-- /container -->
@@ -48,6 +38,7 @@
     var loginUserId = "<%= loginUser.id %>";
     var loginUserName = "<%= loginUser.displayName %>";
     var guestUser = "<%= guestUser %>";
+    var isOwner = <%= isOwner %>;
   </script>
   <script type="text/javascript" src="/js/message.js"></script>
 </body>

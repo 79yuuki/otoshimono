@@ -10,7 +10,7 @@ router.get('/:id', function(req, res){
   if (!id) {
     return res.redirect('/');
   }
-//  var loginUser = req.session.passport.user;
+  var isOwner = (req.session.passport.user) ? true : false;
   // guest user
   redis.hget(id, 'guest', function(err, guestUser){
     if (err) {
@@ -21,9 +21,9 @@ router.get('/:id', function(req, res){
         return res.render('error', err);
       }
       if (guestUser) {
-        res.render('message', {id: id, loginUser: JSON.parse(loginUser), guestUser: guestUser});
+        res.render('message', {id: id, loginUser: JSON.parse(loginUser), guestUser: guestUser, isOwner: isOwner});
       } else {
-        res.render('message', {id: id, loginUser: JSON.parse(loginUser), guestUser: null});
+        res.render('message', {id: id, loginUser: JSON.parse(loginUser), guestUser: null, isOwner: isOwner});
       }
     });
   });
