@@ -8,11 +8,12 @@ router.get('/:id', function(req, res){
   var id = req.param('id');
   res.cookie('id', id);
   if (!id) {
-    return res.redirect('/');
+    return res.render('error', {status:503, stack: "profile id is none"});
   }
 
-  var guestUser = redis.hget(id, 'guest');
-  res.render('profile', {id: id, guestUser: guestUser});
+  redis.hget(id, 'guest', function(err, guestUser){
+    res.render('profile', {id: id, guestUser: guestUser});
+  });
 });
 
 router.post('/finder', function(req, res){
@@ -23,7 +24,7 @@ router.post('/finder', function(req, res){
     res.redirect('/message/' + id);
   } else {
     // error
-    res.render('profile', {id: id, guestUser: null});
+    res.render('error', {status: 503, stack: "profile id is none"});
   }
 });
 

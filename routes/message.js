@@ -16,13 +16,15 @@ router.get('/:id', function(req, res){
   } else {
     // guest user
     // TODO redis から id: guest を引っ張ってきてあったら表示。無ければ名前登録前profileにredirect?
-    var guestUser = redis.hget(id, 'guest');
-    loginUser = redis.hget(id, 'facebook');
-    if (guestUser) {
-      res.render('message', {id: id, loginUser: loginUser, guestUser: guestUser});
-    } else {
-      res.redirect('/profile/' + id);
-    }
+    redis.hget(id, 'guest', function(err, guestUser){
+      redis.hget(id, 'facebook', function(err, loginUser){
+        if (guestUser) {
+          res.render('message', {id: id, loginUser: loginUser, guestUser: guestUser});
+        } else {
+          res.redirect('/profile/' + id);
+        }
+      });
+    });
   }
 });
 
@@ -51,7 +53,12 @@ router.post('/list', function(req, res){
       return res.json({error: 'Redis llen error'});
     }
     if (length > 0) {
-      return res.json({ list: JSON.parse(redis.lrange('message:'+id, 0, length))});
+      redis.lrange('message:'+id, 0, length, function(err, list){
+        if (err) {
+          return res.render('error', err);
+        }
+        return res.json({ list: JSON.parse(list)});
+      });
     } else {
       return res.json({ list: {} });
     }
