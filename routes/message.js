@@ -10,22 +10,23 @@ router.get('/:id', function(req, res){
   if (!id) {
     return res.redirect('/');
   }
-  var loginUser = req.session.passport.user;
-  if (loginUser) {
-    res.render('message', {id: id, loginUser: loginUser, guestUser: null});
-  } else {
-    // guest user
-    // TODO redis から id: guest を引っ張ってきてあったら表示。無ければ名前登録前profileにredirect?
-    redis.hget(id, 'guest', function(err, guestUser){
-      redis.hget(id, 'facebook', function(err, loginUser){
-        if (guestUser) {
-          res.render('message', {id: id, loginUser: loginUser, guestUser: guestUser});
-        } else {
-          res.redirect('/profile/' + id);
-        }
-      });
+//  var loginUser = req.session.passport.user;
+  // guest user
+  redis.hget(id, 'guest', function(err, guestUser){
+    if (err) {
+      return res.render('error', err);
+    }
+    redis.hget(id, 'facebook', function(err, loginUser){
+      if (err) {
+        return res.render('error', err);
+      }
+      if (guestUser) {
+        res.render('message', {id: id, loginUser: JSON.parse(loginUser), guestUser: guestUser});
+      } else {
+        res.render('message', {id: id, loginUser: loginUser, guestUser: null});
+      }
     });
-  }
+  });
 });
 
 router.post('/comment', function(req, res){
