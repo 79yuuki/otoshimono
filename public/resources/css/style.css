@@ -88,6 +88,19 @@ body, p {
 }
 
 
+/* インデックスページ
+-------------------------------------------------- */
+#indexPage .contents .container .movie {
+  display: block;
+  margin: 50px auto;
+}
+
+#errorPage .contents .container .errorText {
+  width: 228px;
+  display: block;
+  margin: 50px auto;
+}
+
 /* ログインページ
 -------------------------------------------------- */
 #fbLoginPage .contents .container .fbLoginText {

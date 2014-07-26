@@ -1,3 +1,20 @@
-<h1><%= message %></h1>
-<h2><%= error.status %></h2>
-<pre><%= error.stack %></pre>
+<% include header %>
+
+<body id="errorPage">
+
+  <header id="header" class="header">
+    <div class="container widthKeeper">
+      <div class="left"></div><div class="right"></div>
+    </div><!-- /container -->
+  </header><!-- /header -->
+
+  <div class="contents widthKeeper">
+    <div class="container">
+      <img class="logo" src="/resources/images/logo.png" alt="">
+      <img class="errorText" src="/resources/images/text_error_message.png"alt="">
+    </div><!-- /container -->
+  </div><!-- /contents -->
+
+  <% include scripts %>
+</body>
+</html>

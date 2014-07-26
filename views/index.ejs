@@ -1,11 +1,20 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title><%= title %></title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
-  </head>
-  <body>
-    <h1><%= title %></h1>
-    <p>Welcome to <%= title %></p>
-  </body>
+<% include header %>
+
+<body id="indexPage">
+
+  <header id="header" class="header">
+    <div class="container widthKeeper">
+      <div class="left"></div><div class="right"></div>
+    </div><!-- /container -->
+  </header><!-- /header -->
+
+  <div class="contents widthKeeper">
+    <div class="container">
+      <img class="logo" src="/resources/images/logo_big.png" alt="">
+　　　 <iframe class="movie" width="400" height="225" src="//www.youtube.com/embed/ysYOdcbIuNA" frameborder="0" allowfullscreen></iframe>
+    </div><!-- /container -->
+  </div><!-- /contents -->
+
+  <% include scripts %>
+</body>
 </html>
