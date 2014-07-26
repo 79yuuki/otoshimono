@@ -26,7 +26,7 @@ $(function(){
     }
   });
 
-  var postUserName = loginUser.displayName || guestUser;
+  var postUserName = loginUserName || guestUser;
 
   $('#commentSendBtn').click(function(){
     $.ajax({
