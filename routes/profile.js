@@ -12,7 +12,14 @@ router.get('/:id', function(req, res){
   }
 
   redis.hget(id, 'facebook', function(err, loginUser){
-    res.render('profile', {id: id, loginUser: JSON.parse(loginUser)});
+    if (err) {
+      return res.render('error',err);
+    }
+    if (loginUser) {
+      res.render('profile', {id: id, loginUser: JSON.parse(loginUser)});
+    } else {
+      res.render('error', {status: 503, stack: "no login user"});
+    }
   });
 });
 
