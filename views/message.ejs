@@ -5,12 +5,12 @@
   <header id="header" class="header">
     <div class="container widthKeeper">
       <div class="userInfo owner left">
-        <img class="icon" src="https://graph.facebook.com/<%= loginUser._json.id %>/picture" alt="">
+        <img class="icon" src="https://graph.facebook.com/<%= loginUser.id %>/picture" alt="">
         <p class="name"><%= loginUser.displayName %>さん</p>
       </div><!-- /owner -->
       <div class="userInfo finder right">
         <img class="icon" src="/resources/images/header_icon_finder.png" alt="">
-        <p class="name">三島 良太さん</p>
+        <p class="name"><% if (guestUser) { %><%= guestUser %>さん<% } else { %>未入室<% } %></p>
       </div><!-- /finder -->
     </div><!-- /container -->
   </header><!-- /header -->
@@ -19,7 +19,7 @@
     <div class="container">
       <table id="messageArea">
         <tr class="messageWrapper owner">
-          <td class="icon"><img src="https://graph.facebook.com/<%= loginUser._json.id %>/picture" alt=""></td>
+          <td class="icon"><img src="https://graph.facebook.com/<%= loginUser.id %>/picture" alt=""></td>
           <td class="fukidashi"></td>
           <td colspan="3" class="message"><p>こんにちは！</p></td>
         </tr>

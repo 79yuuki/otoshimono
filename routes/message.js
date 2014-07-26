@@ -23,7 +23,7 @@ router.get('/:id', function(req, res){
       if (guestUser) {
         res.render('message', {id: id, loginUser: JSON.parse(loginUser), guestUser: guestUser});
       } else {
-        res.render('message', {id: id, loginUser: loginUser, guestUser: null});
+        res.render('message', {id: id, loginUser: JSON.parse(loginUser), guestUser: null});
       }
     });
   });
