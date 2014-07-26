@@ -11,8 +11,8 @@ router.get('/:id', function(req, res){
     return res.render('error', {status:503, stack: "profile id is none"});
   }
 
-  redis.hget(id, 'guest', function(err, guestUser){
-    res.render('profile', {id: id, guestUser: guestUser});
+  redis.hget(id, 'facebook', function(err, loginUser){
+    res.render('profile', {id: id, loginUser: JSON.parse(loginUser)});
   });
 });
 
